@@ -13,14 +13,28 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-attachment: fixed;
+      overflow-x: hidden; /* prevent horizontal scroll */
     }
 
-    /* Container to mimic vertical spacing from original <br> tags */
-    .spacer {
-      height: 200px; /* Adjust this to match your original spacing */
+    /* Make marquees full width */
+    marquee {
+      display: block;
+      width: 100vw;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
-    /* Desktop sizes for images */
+    /* First marquee near top with some margin */
+    .top-marquee {
+      margin-top: 20px;
+    }
+
+    /* Second marquee positioned vertically to align with road */
+    .middle-marquee {
+      margin-top: 350px; /* Adjust this value to align with road in your background */
+    }
+
+    /* Vehicle image sizes */
     .vehicle-1 {
       width: 10vw;
       max-width: 100px;
@@ -47,39 +61,31 @@
         width: 30vw;
         max-width: none;
       }
+      .middle-marquee {
+        margin-top: 200px; /* Adjust for smaller screens */
+      }
     }
 
-    marquee {
-      display: block;
-      margin: 1.5rem 0;
-      line-height: 1; /* Remove extra line height */
-      white-space: nowrap; /* Prevent line breaks */
-    }
-
-    /* Vertically center images inside marquee */
-    marquee img {
-      vertical-align: middle;
+    /* Space between images in second marquee */
+    .middle-marquee img {
+      margin-right: 1rem;
       display: inline-block;
+      vertical-align: middle;
     }
   </style>
 </head>
 <body>
-  <div class="container py-4">
-    <!-- First marquee -->
-    <marquee direction="right" scrollamount="10">
-      <img src="b.gif" class="img-fluid vehicle-1" alt="Vehicle 1" />
-    </marquee>
+  <!-- First marquee near top -->
+  <marquee class="top-marquee" direction="right" scrollamount="10">
+    <img src="b.gif" class="img-fluid vehicle-1" alt="Vehicle 1" />
+  </marquee>
 
-    <!-- Spacer to mimic original vertical space -->
-    <div class="spacer"></div>
-
-    <!-- Second marquee with multiple images -->
-    <marquee direction="right" scrollamount="15">
-      <img src="bb.gif" class="img-fluid vehicle-2 me-3" alt="Vehicle 2" />
-      <img src="s.gif" class="img-fluid vehicle-3 me-3" alt="Vehicle 3" />
-      <img src="d.gif" class="img-fluid vehicle-4 me-3" alt="Vehicle 4" />
-      <img src="l.gif" class="img-fluid vehicle-5" alt="Vehicle 5" />
-    </marquee>
-  </div>
+  <!-- Second marquee positioned on the road -->
+  <marquee class="middle-marquee" direction="right" scrollamount="15">
+    <img src="bb.gif" class="img-fluid vehicle-2" alt="Vehicle 2" />
+    <img src="s.gif" class="img-fluid vehicle-3" alt="Vehicle 3" />
+    <img src="d.gif" class="img-fluid vehicle-4" alt="Vehicle 4" />
+    <img src="l.gif" class="img-fluid vehicle-5" alt="Vehicle 5" />
+  </marquee>
 </body>
 </html>
