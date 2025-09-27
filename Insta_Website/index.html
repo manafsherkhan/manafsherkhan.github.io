@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rang_eaks – Custom Resin & Art Creations</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(180deg, #2b0d5b, #5b42c1, #c0a8f0, #e6e0ff);
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(135deg, #6f42c1, #d63384);
+      color: white;
+      text-align: center;
+      padding: 5rem 1rem;
+      border-bottom-left-radius: 50% 10%;
+      border-bottom-right-radius: 50% 10%;
+    }
+    header h1 { font-size: 3rem; font-weight: bold; }
+    header p { font-size: 1.25rem; }
+
+    section { padding: 5rem 1rem; }
+    section h2 { font-weight: bold; margin-bottom: 1rem; color: #6f42c1; }
+    section p.lead { color: #555; }
+
+    .divider {
+      height: 2px;
+      width: 80%;
+      background: rgba(255,255,255,0.4);
+      margin: 3rem auto;
+      border-radius: 2px;
+    }
+
+    /* About the Artist */
+    #about { background: #f0e6ff; border-radius: 20px; padding: 4rem 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.1);}
+    .artist-box {
+      background: #d6c1ff;
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .artist-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    /* Explore Our Work */
+    #work { background: #e6d6ff; border-radius: 20px; padding: 4rem 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.1);}
+    .work-img {
+      width: 100%; height: 0; padding-bottom: 75%; /* maintain aspect ratio */
+      border-radius:12px;
+      overflow: hidden; position: relative;
+      background: #cfc0ff; display: flex; align-items: center; justify-content: center;
+      font-weight: 500; color: #333;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .work-img img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .work-img:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+
+    /* How to Order */
+    #order { background: #fff0f6; border-radius: 20px; padding: 4rem 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.1);}
+    .order-box {
+      background: #ffd6f0;
+      border-radius: 15px;
+      padding: 2rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .order-box:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
+
+    /* Connect With Us */
+    #contact { background: #ffe6f0; border-radius: 20px; padding: 4rem 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.1);}
+    .contact-box {
+      background: #ffb6d9;
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .contact-box:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
+
+    /* Buttons */
+    .btn-custom {
+      background-color: #d63384;
+      color: white;
+      border-radius: 30px;
+      padding: 0.75rem 1.75rem;
+      text-decoration: none;
+      transition: 0.3s;
+      font-weight: 500;
+    }
+    .btn-custom:hover { background-color: #6f42c1; color:#fff; }
+
+    /* Footer */
+    footer { background-color: #343a40; color: white; text-align: center; padding: 2rem 1rem; border-top-left-radius: 40% 10%; border-top-right-radius: 40% 10%; }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      header h1 { font-size: 2.5rem; }
+      header p { font-size: 1.1rem; }
+      section { padding: 4rem 1rem; }
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      header p { font-size: 1rem; }
+      .artist-box, .order-box, .contact-box { margin-bottom: 1.5rem; }
+      #work .row { row-gap: 1.5rem; }
+    }
+
+    @media (max-width: 576px) {
+      header { padding: 3rem 1rem; }
+      section { padding: 3rem 1rem; }
+      .work-img { padding-bottom: 100%; } /* square for small screens */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Rang_eaks</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#work">Our Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="#order">Order</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header>
+    <h1>🎨 Rang_eaks – Custom Resin & Art Creations</h1>
+    <p>Handmade with passion and creativity</p>
+    <a href="https://www.instagram.com/rang_eaks" target="_blank" class="btn btn-custom mt-3">Visit Instagram</a>
+  </header>
+
+  <main class="container">
+
+    <!-- About the Artist -->
+    <section id="about">
+      <div class="text-center mb-4">
+        <h2>About the Artists</h2>
+        <p class="lead">Meet the creative minds behind Rang_eaks</p>
+      </div>
+      <div class="row g-4 text-center">
+        <div class="col-md-4">
+          <div class="artist-box">
+            <h4>Zukhruf</h4>
+            <p>Specializes in Arabic-style keychains with intricate designs.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="artist-box">
+            <h4>Habiba</h4>
+            <p>Expert in resin art and creating personalized gift items.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="artist-box">
+            <h4>Zara</h4>
+            <p>Focuses on custom designs and innovative art concepts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Explore Our Work -->
+    <section id="work">
+      <div class="text-center mb-4">
+        <h2>Explore Our Work</h2>
+        <p class="lead">A glimpse into our creations</p>
+      </div>
+      <div class="row g-3">
+  <div class="col-md-4 col-sm-6">
+  <div class="work-img">
+    <img src="https://i.imgur.com/ANDIHwc.jpg" alt="Custom Resin Art 1">
+  </div>
+</div>
+<div class="col-md-4 col-sm-6">
+  <div class="work-img">
+    <img src="https://i.imgur.com/LYYKh38.jpg" alt="Custom Resin Art 2">
+  </div>
+</div>
+<div class="col-md-4 col-sm-6">
+  <div class="work-img">
+    <img src="https://i.imgur.com/bN2fAxP.jpg" alt="Custom Resin Art 3">
+  </div>
+</div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- How to Order -->
+    <section id="order">
+      <div class="text-center mb-4">
+        <h2>How to Order</h2>
+        <p class="lead">Follow these simple steps to get your personalized art</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="order-box h-100">
+            <h5>Step 1: Browse</h5>
+            <p>Explore our collection on Instagram or request a custom design.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="order-box h-100">
+            <h5>Step 2: Customize</h5>
+            <p>Send us your ideas, colors, or preferred designs via WhatsApp.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="order-box h-100">
+            <h5>Step 3: Confirm</h5>
+            <p>We will provide a quote and confirm the design before starting.</p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="order-box h-100">
+            <h5>Step 4: Payment</h5>
+            <p>Make a secure payment via the preferred method to start the order.</p>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="order-box text-center">
+            <h5>Step 5: Delivery</h5>
+            <p>Your custom artwork will be delivered with care to your doorstep!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Connect With Us -->
+    <section id="contact">
+      <div class="text-center mb-4">
+        <h2>Connect With Us</h2>
+        <p class="lead">We love to hear from our customers!</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="contact-box h-100">
+            <h5>Instagram</h5>
+            <p>Follow us for the latest designs and updates.</p>
+            <a href="https://www.instagram.com/rang_eaks" target="_blank" class="btn btn-custom mt-2">Visit Instagram</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="contact-box h-100">
+            <h5>WhatsApp Orders</h5>
+            <p>Send us a message to place your custom order or ask questions.</p>
+            <a href="https://wa.me/923215647476" target="_blank" class="btn btn-custom mt-2">Message on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Rang_eaks – All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
