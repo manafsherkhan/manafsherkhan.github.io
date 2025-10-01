@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rang_eaks – Custom Resin & Art Creations</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f1c40f;
+      --secondary: #6f42c1;
+      --dark-bg: #0d0d1a;
+      --light-bg: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: var(--dark-bg);
+      color: #fff;
+      overflow-x: hidden;
+      transition: background 0.5s, color 0.5s;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background: rgba(0,0,0,0.8) !important;
+      backdrop-filter: blur(8px);
+      transition: background 0.3s;
+    }
+    .navbar-nav .nav-link {
+      position: relative;
+      color: #fff !important;
+      font-weight: 500;
+      margin: 0 10px;
+    }
+    .navbar-nav .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* SECTION BOXES */
+    section {
+      padding: 4rem 1rem;
+    }
+    .section-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 1100px;
+      margin: auto;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .section-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(241,196,15,0.4);
+    }
+    h2 {
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    p.lead { color: #ccc; }
+
+    /* WORK IMAGES */
+    .work-img {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      border: 2px solid rgba(255,255,255,0.2);
+      perspective: 1000px;
+      transition: transform 0.3s;
+    }
+    .work-img img {
+      width: 100%;
+      border-radius: 15px;
+      transition: transform 0.4s;
+    }
+    .work-img:hover img {
+      transform: scale(1.08) rotateY(8deg);
+    }
+    .work-img:hover {
+      box-shadow: 0 12px 25px rgba(241,196,15,0.4);
+    }
+
+    /* SPARKLE */
+    .work-img::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
+      background-size: 10px 10px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .work-img:hover::after { opacity: 1; }
+
+    /* BUTTONS */
+    .btn-custom {
+      background-color: var(--primary);
+      color: black;
+      border-radius: 30px;
+      padding: 0.75rem 1.75rem;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: var(--secondary);
+      color: #fff;
+    }
+    .btn-custom::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.4);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+    }
+    .btn-custom:active::after {
+      width: 200%;
+      height: 200%;
+    }
+
+    /* FOOTER */
+    footer {
+      background: rgba(0,0,0,0.85);
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* COLOR MODES */
+    body.light-mode {
+      background: var(--light-bg);
+      color: #222;
+    }
+    body.light-mode .section-box {
+      background: rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    body.light-mode h2 { color: var(--secondary); }
+    body.gradient-mode {
+      background: linear-gradient(135deg, #2b0d5b, #d63384, #f1c40f);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Rang_eaks</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#work">Our Work</a></li>
+          <li class="nav-item"><a class="nav-link" href="#order">Order</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <button class="btn btn-custom ms-3" id="modeToggle">🌗 Mode</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="text-center py-5" data-aos="zoom-in">
+    <h1>🎨 Rang_eaks – Custom Resin & Art Creations</h1>
+    <p>Handmade with passion and creativity</p>
+    <a href="https://www.instagram.com/rang_eaks" target="_blank" class="btn btn-custom mt-3">Visit Instagram</a>
+  </header>
+
+  <!-- About -->
+  <section id="about" data-aos="fade-right">
+    <div class="section-box text-center">
+      <h2>About the Artist</h2>
+      <p class="lead">Meet the creative mind behind Rang_eaks</p>
+      <h4>Zukhruf</h4>
+      <p>Specializes in Arabic-style keychains with intricate designs.</p>
+    </div>
+  </section>
+
+  <!-- Work -->
+  <section id="work" data-aos="fade-up">
+    <div class="section-box">
+      <div class="text-center mb-4">
+        <h2>Explore Our Work</h2>
+        <p class="lead">A glimpse into our creations</p>
+      </div>
+      <div class="row g-3">
+        <div class="col-md-4 col-sm-6 col-12">
+          <a href="https://i.imgur.com/ANDIHwc.jpg" class="glightbox">
+            <div class="work-img"><img src="https://i.imgur.com/ANDIHwc.jpg"></div>
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+          <a href="https://i.imgur.com/LYYKh38.jpg" class="glightbox">
+            <div class="work-img"><img src="https://i.imgur.com/LYYKh38.jpg"></div>
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+          <a href="https://i.imgur.com/bN2fAxP.jpg" class="glightbox">
+            <div class="work-img"><img src="https://i.imgur.com/bN2fAxP.jpg"></div>
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+          <a href="https://i.imgur.com/B7KklbY.jpg" class="glightbox">
+            <div class="work-img"><img src="https://i.imgur.com/B7KklbY.jpg"></div>
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+          <a href="https://i.imgur.com/6Y1hjyr.jpg" class="glightbox">
+            <div class="work-img"><img src="https://i.imgur.com/6Y1hjyr.jpg"></div>
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+          <a href="https://i.imgur.com/ikUIw0v.jpg" class="glightbox">
+            <div class="work-img"><img src="https://i.imgur.com/ikUIw0v.jpg"></div>
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+          <a href="https://i.imgur.com/EgXc11c.jpg" class="glightbox">
+            <div class="work-img"><img src="https://i.imgur.com/EgXc11c.jpg"></div>
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+          <a href="https://i.imgur.com/xgEeucN.jpg" class="glightbox">
+            <div class="work-img"><img src="https://i.imgur.com/xgEeucN.jpg"></div>
+          </a>
+        </div>
+        <div class="col-md-4 col-sm-6 col-12">
+          <a href="https://i.imgur.com/vf30iSJ.jpg" class="glightbox">
+            <div class="work-img"><img src="https://i.imgur.com/vf30iSJ.jpg"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order -->
+  <section id="order" data-aos="fade-left">
+    <div class="section-box text-center">
+      <h2>How to Order</h2>
+      <p class="lead">Follow these steps to get your custom piece</p>
+      <h5>Message us on Instagram or WhatsApp to begin your journey!</h5>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" data-aos="fade-up">
+    <div class="section-box">
+      <div class="text-center mb-4">
+        <h2>Connect With Us</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="p-4 border rounded text-center">
+            <h5>Instagram</h5>
+            <a href="https://www.instagram.com/rang_eaks" target="_blank" class="btn btn-custom mt-2">Visit Instagram</a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="p-4 border rounded text-center">
+            <h5>WhatsApp</h5>
+            <a href="https://wa.me/923215647476" target="_blank" class="btn btn-custom mt-2">Message on WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Rang_eaks – All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    AOS.init({ duration: 1200, once: true });
+    const lightbox = GLightbox({ selector: '.glightbox' });
+
+    // Highlight active link while scrolling
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 70;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+          link.classList.add("active");
+        }
+      });
+    });
+
+    // Color mode toggle
+    const modeToggle = document.getElementById("modeToggle");
+    let mode = 0;
+    modeToggle.addEventListener("click", () => {
+      document.body.classList.remove("light-mode", "gradient-mode");
+      if (mode === 0) { document.body.classList.add("light-mode"); mode = 1; }
+      else if (mode === 1) { document.body.classList.add("gradient-mode"); mode = 2; }
+      else { mode = 0; }
+    });
+  </script>
+</body>
+</html>
